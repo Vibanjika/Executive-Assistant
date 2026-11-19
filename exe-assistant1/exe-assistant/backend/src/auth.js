@@ -61,7 +61,6 @@ router.post("/logout", (req, res) => {
   res.json({ ok: true });
 });
 router.get("/google", requireAuth, (req, res) => {
-  // Short-lived signed "state" that remembers who started the connection
   const state = jwt.sign({ id: req.user.id, purpose: "google-connect" }, process.env.JWT_SECRET, {
     expiresIn: "10m",
   });
